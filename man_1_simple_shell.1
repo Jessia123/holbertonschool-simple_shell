@@ -5,32 +5,29 @@ SYNOPSIS
 ./hsh
 
 DESCRIPTION
-hsh is a simple shell program that can execute commands entered by the user or read from a file or pipeline.
+hsh is a simple shell program that can execute commands entered by the user or read from a file or pipeline
 
-vbnet
-Copy code
-   Unless specified otherwise, the output of hsh must be exactly the same as the output of the sh (/bin/sh) shell, as well as the exact same error output. The only difference is when hsh prints an error, the name of the program must be equivalent to your argv[0].
+Unless specified otherwise, the output of hsh must be exactly the same as the output of the sh (/bin/sh) shell, as well as the exact same error output. The only difference is when hsh prints an error, the name of the program must be equivalent to your argv[0].
+
 USAGE
 To run hsh in interactive mode, simply execute the program without any arguments:
-
-vbnet
-Copy code
           $ ./hsh
           ($)
 
-   hsh will display a prompt consisting of a dollar sign ($), indicating that it is ready to accept commands. Enter the command you wish to execute, and press Enter to execute it.
+     -hsh will display a prompt consisting of a dollar sign ($), indicating that it is ready to accept commands. Enter the command you wish to execute, and press Enter to execute it.
 
-   To exit the shell, type "exit" and press Enter:
+To exit the shell, type "exit" and press Enter:
 
           ($) exit
           $
 
-   To run hsh in non-interactive mode, pipe a file or a pipeline into hsh:
+ To run hsh in non-interactive mode, pipe a file or a pipeline into hsh:
 
           $ echo "/bin/ls" | ./hsh
           hsh main.c shell.c test_ls_2
 
    hsh will execute the commands in the file or pipeline and display the output.
+   
 ALLOWED FUNCTIONS AND SYSTEM CALLS
 access (man 2 access)
 chdir (man 2 chdir)
@@ -67,7 +64,8 @@ write (man 2 write)
 COMPILATION
 hsh can be compiled using the following command:
 
-          gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+       gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+
 EXAMPLES
 Execute a command in interactive mode:
 
