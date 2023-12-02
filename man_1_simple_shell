@@ -1,6 +1,6 @@
-.TH MANPAGE_NAME 1 "DATE" "VERSION" "MANPAGE_TITLE"
+.TH MANPAGE_NAME 1 "DATE" "VERSION" "SIMPLE SHELL"
 .SH NAME
-manpage_name \- Man page for the simple_shell program
+simple shell \- Man page for the simple_shell program
 
 .SH SYNOPSIS
 .B simple_shell
