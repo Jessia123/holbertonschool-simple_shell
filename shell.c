@@ -33,8 +33,8 @@ int main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
 
-        if (pid == 0)
-        {
+    if (pid == 0)
+    {
 execv(args[0], args);
 
      /* If we get here, execv failed */
