@@ -33,10 +33,19 @@ int main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
 
-    if (pid == 0)
-    {
-execv(args[0], args);
+        if (pid == 0)
+        {
+            execv(args[0], args);
 
+            /* If we get here, execv failed */
+            perror(args[0]);
+            exit(EXIT_FAILURE);
+        }
+        else
+        {
+            wait(NULL);
+        }
+    }
      /* If we get here, execv failed */
             perror(args[0]);
             exit(EXIT_FAILURE);
