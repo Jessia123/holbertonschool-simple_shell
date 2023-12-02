@@ -15,9 +15,9 @@
 
 int main(int argc, char *argv[])
 {
-    //char *line = NULL;
-    // size_t len = 0;
-    // ssize_t read;
+    /* char *line = NULL; */
+    /* size_t len = 0; */
+    /* ssize_t read; */
     pid_t pid;
     char *args[2];
 
