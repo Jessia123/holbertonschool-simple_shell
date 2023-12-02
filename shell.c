@@ -1,3 +1,16 @@
+/**
+ * @file shell.c
+ * @brief A simple shell program that executes a command passed as a command line argument.
+ *
+ * This program takes a command as a command line argument and executes it using the `execv` function.
+ * It forks a child process, and the child process uses `execv` to execute the command.
+ * The parent process waits for the child process to complete using the `wait` function.
+ *
+ * @param argc The number of command line arguments.
+ * @param argv An array of strings containing the command line arguments.
+ * @return 0 on success, -1 on failure.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -33,8 +46,22 @@ int main(int argc, char *argv[]) {
 
         return 0;
     }
+}
 
-int main() {
+
+
+/**
+ * main - Entry point for the shell program
+ *
+ * Description:
+ * This function serves as the entry point for the shell program.
+ * It initializes the shell, reads user input, and executes commands accordingly.
+ *
+ * Return:
+ * 0 on success, -1 on failure
+ */
+int main(void)
+{
     char *line = NULL;
     size_t len = 0;
     ssize_t read;
