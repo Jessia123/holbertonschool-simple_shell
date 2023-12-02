@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
         args[1] = NULL;
         pid = fork();
 
-        if (pid == -1)
+    if (pid == -1)
         {
             perror("fork");
             exit(EXIT_FAILURE);
