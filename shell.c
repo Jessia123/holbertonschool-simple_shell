@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include "shell.h" /* Assuming shell.h contains necessary function prototypes or constants*/
+#include "shell.h" /* Assuming shell.h contains necessary function prototypes or constants */
 
 /**
  * main - Main function for executing shell commands.
@@ -20,10 +20,10 @@ int main(int argc, char *argv[])
     /* Check if arguments are provided */
     if (argc > 1)
     {
-        args[0] = argv[1]; // Set the command to be executed
-        args[1] = NULL;    // Null-terminate the argument list
+        args[0] = argv[1]; /* Set the command to be executed */
+        args[1] = NULL;    /* Null-terminate the argument list */
 
-        pid = fork(); // Create a new process
+        pid = fork(); /* Create a new process 
 
         /* Check for fork() failure */
         if (pid == -1)
@@ -44,13 +44,13 @@ int main(int argc, char *argv[])
         }
         else /* Parent process */
         {
-            wait(NULL); // Wait for the child process to finish
+            wait(NULL); /* Wait for the child process to finish */
         }
     }
     else
     {
         /* If we get here, execv failed */
-        perror(args[0]); // No command provided, so print an error
+        perror(args[0]); /* No command provided, so print an error */
         exit(EXIT_FAILURE);
     }
 
