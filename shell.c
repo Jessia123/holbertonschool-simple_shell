@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
         args[0] = argv[1]; /* Set the command to be executed */
         args[1] = NULL;    /* Null-terminate the argument list */
 
-        pid = fork(); /* Create a new process 
+        pid = fork(); /* Create a new process */
 
         /* Check for fork() failure */
         if (pid == -1)
@@ -49,6 +49,9 @@ int main(int argc, char *argv[])
     }
     else
     {
+        args[0] = "default_command"; /* Set a default command */
+        args[1] = NULL;              /* Null-terminate the argument list */
+
         /* If we get here, execv failed */
         perror(args[0]); /* No command provided, so print an error */
         exit(EXIT_FAILURE);
