@@ -3,34 +3,47 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include "shell.h"
+#include "shell.h" // Assuming shell.h contains necessary function prototypes or constants
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     pid_t pid;
     char *args[2];
 
-    if (argc > 1) {
-        args[0] = argv[1];
-        args[1] = NULL;
-        pid = fork();
+    // Check if arguments are provided
+    if (argc > 1)
+    {
+        args[0] = argv[1]; // Set the command to be executed
+        args[1] = NULL;    // Null-terminate the argument list
 
-        if (pid == -1) {
+        pid = fork(); // Create a new process
+
+        // Check for fork() failure
+        if (pid == -1)
+        {
             perror("fork");
             exit(EXIT_FAILURE);
         }
 
-        if (pid == 0) {
+        // Child process
+        if (pid == 0)
+        {
+            // Execute the command
             execv(args[0], args);
 
             /* If we get here, execv failed */
             perror(args[0]);
             exit(EXIT_FAILURE);
-        } else {
-            wait(NULL);
         }
-    } else {
+        else // Parent process
+        {
+            wait(NULL); // Wait for the child process to finish
+        }
+    }
+    else
+    {
         /* If we get here, execv failed */
-        perror(args[0]);
+        perror(args[0]); // No command provided, so print an error
         exit(EXIT_FAILURE);
     }
 
