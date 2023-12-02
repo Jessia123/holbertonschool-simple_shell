@@ -5,6 +5,14 @@
 #include <sys/wait.h>
 #include "shell.h"
 
+/**
+ * main - Entry point of the shell program
+ * @argc: The number of command line arguments
+ * @argv: The command line arguments
+ * 
+ * Return: 0 on success, or exit code on failure
+ */
+
 int main(int argc, char *argv[])
 {
     char *line = NULL;
@@ -88,18 +96,18 @@ int main(void)
             exit(EXIT_FAILURE);
         }
     }
-}
-        }
 
-        if (pid == 0) {
-            execv(args[0], args);
+    if (pid == 0)
+    {
+        execv(args[0], args);
 
-            /* If we get here, execv failed */
-            perror(args[0]);
-            exit(EXIT_FAILURE);
-        } else {
-            wait(NULL);
-        }
+        /* If we get here, execv failed */
+        perror(args[0]);
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        wait(NULL);
     }
 
     free(line);
