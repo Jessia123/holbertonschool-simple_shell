@@ -9,7 +9,6 @@
  * main - Entry point of the shell program
  * @argc: The number of command line arguments
  * @argv: The command line arguments
- * 
  * Return: 0 on success, or exit code on failure
  */
 
