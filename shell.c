@@ -5,6 +5,7 @@
 #include <sys/wait.h>
 #include "shell.h" // Assuming shell.h contains necessary function prototypes or constants
 
+// Main function for executing shell commands.
 int main(int argc, char *argv[])
 {
     pid_t pid;
