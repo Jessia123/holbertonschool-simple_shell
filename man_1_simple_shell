@@ -1,0 +1,34 @@
+.TH MANPAGE_NAME 1 "DATE" "VERSION" "MANPAGE_TITLE"
+.SH NAME
+manpage_name \- Man page for the simple_shell program
+
+.SH SYNOPSIS
+.B simple_shell
+[\fIOPTION\fR]...
+
+.SH DESCRIPTION
+This manual page documents the simple_shell program, a simple Unix shell implementation.
+
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Display help message and exit.
+
+.SH EXAMPLES
+.TP
+To run the simple_shell program, use the following command:
+.BR simple_shell
+
+.SH SEE ALSO
+.TP
+The full documentation for the simple_shell program can be found at:
+.BR https://github.com/Jessia123/holbertonschool-simple_shell#readme
+
+.SH AUTHOR
+Written by Your Jessia Grimes & John Doe.
+
+.SH COPYRIGHT
+Copyright \(co 2023 Jessia Grimes & John Doe
+
+.SH BUGS
+Report any bugs to 6143@holbertonstudents.com
