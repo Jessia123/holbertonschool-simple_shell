@@ -5,7 +5,13 @@
 #include <sys/wait.h>
 #include "shell.h" // Assuming shell.h contains necessary function prototypes or constants
 
-// Main function for executing shell commands.
+/**
+ * main - Main function for executing shell commands.
+ * @argc: The number of command-line arguments.
+ * @argv: An array of strings containing the command-line arguments.
+ *
+ * Return: Always 0.
+ */
 int main(int argc, char *argv[])
 {
     pid_t pid;
