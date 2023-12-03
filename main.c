@@ -57,19 +57,3 @@ int main(int argc, char *argv[])
 
     return (0);
 }
-
-int main()
-{
-    char *args[] = {"/bin/ls", NULL};
-
-    if (execve("/bin/ls", args, NULL) == -1)
-    {
-        perror("execve");
-        exit(EXIT_FAILURE);
-    }
-
-    /* This code will not be reached if execve() is successful */
-    printf("This won't be printed\n");
-
-    return (0);
-}
