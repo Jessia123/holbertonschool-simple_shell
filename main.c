@@ -3,12 +3,13 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include "shell.h" 
+#include "shell.h"
 
 /**
  * main - Main function for executing shell commands.
  * @argc: The number of command-line arguments.
  * @argv: An array of strings containing the command-line arguments.
+ * Return: 0 on success, otherwise -1.
  */
 int main(int argc, char *argv[])
 {
@@ -49,11 +50,26 @@ int main(int argc, char *argv[])
     {
         args[0] = "default_command"; /* Set a default command */
         args[1] = NULL;              /* Null-terminate the argument list */
-
         /* If we get here, execv failed */
         perror(args[0]); /* No command provided, so print an error */
         exit(EXIT_FAILURE);
     }
 
-    return 0;
+    return (0);
+}
+
+int main()
+{
+    char *args[] = {"/bin/ls", NULL};
+
+    if (execve("/bin/ls", args, NULL) == -1)
+    {
+        perror("execve");
+        exit(EXIT_FAILURE);
+    }
+
+    /* This code will not be reached if execve() is successful */
+    printf("This won't be printed\n");
+
+    return (0);
 }
