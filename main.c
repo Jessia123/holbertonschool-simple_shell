@@ -4,11 +4,11 @@
 
 int main(int argc, char **argv)
 {
-    (void)argc, (void)argv;
     char *buf = NULL;
     size_t count = 0;
     ssize_t nread;
-    ssize_t nread;
+
+    (void)argc, (void)argv;
 
     write(STDOUT_FILENO, "MyShell$ ", 9);
     nread = getline(&buf, &count, stdin);
@@ -19,6 +19,4 @@ int main(int argc, char **argv)
          exit(1);
     }
     printf("%s", buf);
-    free(buf);
-    return (0);
 }
