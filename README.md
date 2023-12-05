@@ -16,7 +16,7 @@ Once compiled, to start the program, run:
 
 To exit the program, run:
 
-<code>BENRON $ exit</code>
+<code>holberton-simple_shell $ exit</code>
 
 ## Built-Ins
 
@@ -26,7 +26,7 @@ The following built-in is supported by BENRON Shell
 
 ## Return Value
 
-BENRON Shell will run with a return value of 0, or a 1 if command failed.
+Holberton-simple_shell Shell will run with a return value of 0, or a 1 if command failed.
 
 ### List of Functions
 
