@@ -35,7 +35,7 @@ int main(void) {
         buffer[strcspn(buffer, "\n")] = '\0';
 
         token = strtok(buffer, " ");
-        i = 0; // Reset i for each loop iteration
+        i = 0; /* Reset i for each loop iteration */
 
         /* Tokenize input into command and arguments */
         while (token != NULL) {
@@ -44,7 +44,7 @@ int main(void) {
         }
         args[i] = NULL; /* Set the last element to NULL for execve */
 
-        pid = fork(); // Assign value to pid at the start of the block
+        pid = fork(); /* Assign value to pid at the start of the block */
 
         /* Error handling for fork */
         if (pid == -1) {
