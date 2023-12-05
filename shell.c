@@ -17,6 +17,11 @@ int main(void)
     size_t bufsize = 0;
     ssize_t characters;
 
+    char *token;  // Move declaration to the top
+    char *args[MAX_ARGS]; // Move declaration to the top
+
+    int i = 0; // Move declaration to the top
+
     while (1)
     {
         /* Displaying the prompt */
@@ -41,11 +46,8 @@ int main(void)
         /* Remove newline character */
         buffer[strcspn(buffer, "\n")] = '\0';
 
-        char *token;
-        char *args[MAX_ARGS]; /* Array to store command and arguments */
-
         token = strtok(buffer, " ");
-        int i = 0;
+        i = 0; // Reinitialize i for each loop iteration
 
         /* Tokenize input into command and arguments */
         while (token != NULL)
