@@ -2,35 +2,47 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 
-int main(void) {
-    char *buffer;
-    size_t bufsize = 1024; /* Initial buffer size */
+#define MAX_ARGS 100 // Maximum number of arguments
+
+/**
+ * main - Simple Shell
+ * Description: Basic UNIX command-line interpreter
+ * Return: Always 0
+ */
+int main(void)
+{
+    char *buffer = NULL;
+    size_t bufsize = 0;
     ssize_t characters;
 
-    buffer = (char *)malloc(bufsize * sizeof(char));
-    if (buffer == NULL) {
-        perror("malloc");
-        exit(EXIT_FAILURE);
-    }
-
-    while (1) {
-        printf("$ "); /* Displaying the prompt */
+    while (1)
+    {
+        // Displaying the prompt
+        printf("$ ");
         characters = getline(&buffer, &bufsize, stdin);
 
-        if (characters == -1) {
-            if (feof(stdin)) {
+        // Error handling for getline
+        if (characters == -1)
+        {
+            if (feof(stdin))
+            {
                 printf("\n");
-                break; /* Exit the loop on Ctrl+D (end of file) */
-            } else {
+                break; // Exit loop on Ctrl+D (end of file)
+            }
+            else
+            {
                 perror("getline");
                 exit(EXIT_FAILURE);
             }
         }
 
-        buffer[strcspn(buffer, "\n")] = '\0'; /* Removing newline character */
-    }
+        // Remove newline character
+        buffer[strcspn(buffer, "\n")] = '\0';
 
-    free(buffer);
-    return EXIT_SUCCESS;
-}
+        char *token;
+        char *args[MAX_ARGS]; // Array to store command and arguments
+
+        token = strtok(buffer, " ");
+        int i = 0;
