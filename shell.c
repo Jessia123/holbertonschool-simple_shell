@@ -16,9 +16,12 @@ int main(void)
     char *buffer = NULL;
     size_t bufsize = 0;
     ssize_t characters;
+
     char *token;
     char *args[MAX_ARGS];
     int i;
+
+    pid_t pid; /* Declare pid outside the loop */
 
     while (1)
     {
@@ -55,7 +58,7 @@ int main(void)
         }
         args[i] = NULL; /* Set the last element to NULL for execve */
 
-        pid_t pid = fork();
+        pid = fork(); /* Assign fork result to pid */
 
         /* Error handling for fork */
         if (pid == -1)
