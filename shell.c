@@ -85,4 +85,91 @@ int main(void)
 
     free(buffer);
     return EXIT_SUCCESS;
+}#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+/**
+ * main - a simple shell program
+ * Return: EXIT_SUCCESS on success, or EXIT_FAILURE on failure
+ */
+int main(void)
+{
+    char *buffer;
+    size_t bufsize = 32;
+    size_t characters;
+    char *token;
+    char *args[100];
+    int i;
+    pid_t pid;
+
+    buffer = (char *)malloc(bufsize * sizeof(char));
+    if (buffer == NULL)
+    {
+        perror("Unable to allocate buffer");
+        exit(EXIT_FAILURE);
+    }
+
+    while (1)
+    {
+        printf("$ "); /* Display prompt */
+        characters = getline(&buffer, &bufsize, stdin); /* Read user input */
+
+        if (characters == -1)
+        {
+            if (feof(stdin))
+            {
+                printf("\n");
+                break;
+            }
+            else
+            {
+                perror("getline");
+                exit(EXIT_FAILURE);
+            }
+        }
+
+        buffer[strcspn(buffer, "\n")] = '\0'; /* Remove newline character */
+
+        token = strtok(buffer, " ");
+        i = 0;
+
+        /* Tokenize input into command and arguments */
+        while (token != NULL)
+        {
+            args[i++] = token;
+            token = strtok(NULL, " ");
+        }
+        args[i] = NULL; /* Set the last element to NULL for execve */
+
+        pid = fork(); /* Create child process */
+
+        if (pid == -1)
+        {
+            perror("fork");
+            exit(EXIT_FAILURE);
+        }
+
+        if (pid == 0)
+        {
+            /* Child process executes the command */
+            if (execve(args[0], args, NULL) == -1)
+            {
+                perror("execve");
+                exit(EXIT_FAILURE);
+            }
+        }
+        else
+        {
+            /* Parent process waits for child */
+            int status;
+            waitpid(pid, &status, 0);
+            printf("\n"); /* Display newline after command execution */
+        }
+    }
+
+    free(buffer);
+    return EXIT_SUCCESS;
 }
