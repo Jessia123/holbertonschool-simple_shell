@@ -1,24 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
-int main(int argc, char **argv)
-{
-    char *buf = NULL;
-    size_t count = 0;
-    ssize_t nread;
+int main(void) {
+    char *buffer;
+    size_t bufsize = 1024; /* Initial buffer size */
+    ssize_t characters;
 
-    (void)argc, (void)argv;
-
-    write(STDOUT_FILENO, "MyShell$ ", 9);
-    nread = getline(&buf, &count, stdin);
-
-    if (nread ==  -1)
-    {
-         perror("Exiting shell");
-         exit(1);
+    buffer = (char *)malloc(bufsize * sizeof(char));
+    if (buffer == NULL) {
+        perror("malloc");
+        exit(EXIT_FAILURE);
     }
-    printf("%s", buf);
 
-    return 0;
+    while (1) {
+        printf("$ "); /* Displaying the prompt */
+        characters = getline(&buffer, &bufsize, stdin);
+
+        if (characters == -1) {
+            if (feof(stdin)) {
+                printf("\n");
+                break; /* Exit the loop on Ctrl+D (end of file) */
+            } else {
+                perror("getline");
+                exit(EXIT_FAILURE);
+            }
+        }
+
+        buffer[strcspn(buffer, "\n")] = '\0'; /* Removing newline character */
+    }
+
+    free(buffer);
+    return EXIT_SUCCESS;
 }
