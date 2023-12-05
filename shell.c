@@ -4,7 +4,7 @@
 #include <string.h>
 #include <sys/wait.h>
 
-#define MAX_ARGS 100 // Maximum number of arguments
+#define MAX_ARGS 100 /* Maximum number of arguments */
 
 /**
  * main - Simple Shell
@@ -19,17 +19,17 @@ int main(void)
 
     while (1)
     {
-        // Displaying the prompt
+        /* Displaying the prompt */
         printf("$ ");
         characters = getline(&buffer, &bufsize, stdin);
 
-        // Error handling for getline
+        /* Error handling for getline */
         if (characters == -1)
         {
             if (feof(stdin))
             {
                 printf("\n");
-                break; // Exit loop on Ctrl+D (end of file)
+                break; /* Exit loop on Ctrl+D (end of file) */
             }
             else
             {
@@ -38,33 +38,33 @@ int main(void)
             }
         }
 
-        // Remove newline character
+        /* Remove newline character */
         buffer[strcspn(buffer, "\n")] = '\0';
 
         char *token;
-        char *args[MAX_ARGS]; // Array to store command and arguments
+        char *args[MAX_ARGS]; /* Array to store command and arguments */
 
         token = strtok(buffer, " ");
         int i = 0;
 
-        // Tokenize input into command and arguments
+        /* Tokenize input into command and arguments */
         while (token != NULL)
         {
             args[i++] = token;
             token = strtok(NULL, " ");
         }
-        args[i] = NULL; // Set the last element to NULL for execve
+        args[i] = NULL; /* Set the last element to NULL for execve */
 
         pid_t pid = fork();
 
-        // Error handling for fork
+        /* Error handling for fork */
         if (pid == -1)
         {
             perror("fork");
             exit(EXIT_FAILURE);
         }
 
-        // Child process executes the command
+        /* Child process executes the command */
         if (pid == 0)
         {
             if (execve(args[0], args, NULL) == -1)
@@ -73,7 +73,7 @@ int main(void)
                 exit(EXIT_FAILURE);
             }
         }
-        else // Parent process waits for child
+        else /* Parent process waits for child */
         {
             int status;
             waitpid(pid, &status, 0);
