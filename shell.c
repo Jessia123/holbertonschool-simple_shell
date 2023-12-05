@@ -46,3 +46,40 @@ int main(void)
 
         token = strtok(buffer, " ");
         int i = 0;
+
+        // Tokenize input into command and arguments
+        while (token != NULL)
+        {
+            args[i++] = token;
+            token = strtok(NULL, " ");
+        }
+        args[i] = NULL; // Set the last element to NULL for execve
+
+        pid_t pid = fork();
+
+        // Error handling for fork
+        if (pid == -1)
+        {
+            perror("fork");
+            exit(EXIT_FAILURE);
+        }
+
+        // Child process executes the command
+        if (pid == 0)
+        {
+            if (execve(args[0], args, NULL) == -1)
+            {
+                perror("execve");
+                exit(EXIT_FAILURE);
+            }
+        }
+        else // Parent process waits for child
+        {
+            int status;
+            waitpid(pid, &status, 0);
+        }
+    }
+
+    free(buffer);
+    return EXIT_SUCCESS;
+}
