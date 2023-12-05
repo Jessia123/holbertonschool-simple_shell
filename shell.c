@@ -4,8 +4,9 @@
 #include <string.h>
 #include <sys/wait.h>
 
-#define MAX_ARGS 100 /* Maximum number of arguments */
-/**
+#define MAX_ARGS 100
+
+/*
  * main - Entry point for the shell program
  *
  * Description: Implements a simple shell that reads commands
@@ -14,61 +15,71 @@
  *
  * Return: Always returns 0 on successful completion.
  */
-int main(void) {
-    char *buffer = NULL;
-    size_t bufsize = 0;
-    ssize_t characters;
-    char *token;
-    char *args[MAX_ARGS];
-    int i;
-    pid_t pid; /* Declare pid at the start of the block */
+int main(void)
+{
+    char *buffer = NULL;        /* Buffer to store user input */
+    size_t bufsize = 0;         /* Size of the buffer */
+    ssize_t characters;         /* Number of characters read */
+    char *token;                /* Tokenized input */
+    char *args[MAX_ARGS];       /* Array to store command and arguments */
+    int i;                      /* Loop variable */
+    pid_t pid;                  /* Process ID */
 
-    while (1) {
-        /* Displaying the prompt */
-        printf("$ ");
-        characters = getline(&buffer, &bufsize, stdin);
+    while (1)
+    {
+        printf("$ "); /* Display prompt */
+        characters = getline(&buffer, &bufsize, stdin); /* Read user input */
 
-        /* Error handling for getline */
-        if (characters == -1) {
-            if (feof(stdin)) {
+        if (characters == -1)
+        {
+            if (feof(stdin))
+            {
                 printf("\n");
-                break; /* Exit loop on Ctrl+D (end of file) */
-            } else {
+                break;
+            }
+            else
+            {
                 perror("getline");
                 exit(EXIT_FAILURE);
             }
         }
 
-        /* Remove newline character */
-        buffer[strcspn(buffer, "\n")] = '\0';
+        buffer[strcspn(buffer, "\n")] = '\0'; /* Remove newline character */
 
         token = strtok(buffer, " ");
-        i = 0; /* Reset i for each loop iteration */
+        i = 0;
 
         /* Tokenize input into command and arguments */
-        while (token != NULL) {
+        while (token != NULL)
+        {
             args[i++] = token;
             token = strtok(NULL, " ");
         }
         args[i] = NULL; /* Set the last element to NULL for execve */
 
-        pid = fork(); /* Assign value to pid at the start of the block */
+        pid = fork(); /* Create child process */
 
-        /* Error handling for fork */
-        if (pid == -1) {
+        if (pid == -1)
+        {
             perror("fork");
             exit(EXIT_FAILURE);
         }
 
-        /* Child process executes the command */
-        if (pid == 0) {
-            if (execve(args[0], args, NULL) == -1) {
+        if (pid == 0)
+        {
+            /* Child process executes the command */
+            if (execve(args[0], args, NULL) == -1)
+            {
                 perror("execve");
                 exit(EXIT_FAILURE);
             }
-        } else { /* Parent process waits for child */
+        }
+        else
+        {
+            /* Parent process waits for child */
             int status;
             waitpid(pid, &status, 0);
+            printf("\n"); /* Display newline after command execution */
         }
     }
 
