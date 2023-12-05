@@ -1,36 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
+#include <string.h>
 #include <sys/wait.h>
 
-/**
- * main - a simple shell program
- * Return: EXIT_SUCCESS on success, or EXIT_FAILURE on failure
+#define MAX_ARGS 100
+
+/*
+ * main - Entry point for the shell program
+ *
+ * Description: Implements a simple shell that reads commands
+ *              from the user, tokenizes them, and executes
+ *              using the execve system call in child processes.
+ *
+ * Return: Always returns 0 on successful completion.
  */
 int main(void)
 {
-    char *buffer;
-    size_t bufsize = 32;
-    size_t characters;
-    char *token;
-    char *args[100];
-    int i;
-    pid_t pid;
-
-    buffer = (char *)malloc(bufsize * sizeof(char));
-    if (buffer == NULL)
-    {
-        perror("Unable to allocate buffer");
-        exit(EXIT_FAILURE);
-    }
+    char *buffer = NULL;        /* Buffer to store user input */
+    size_t bufsize = 0;         /* Size of the buffer */
+    ssize_t characters;         /* Number of characters read */
+    char *token;                /* Tokenized input */
+    char *args[MAX_ARGS];       /* Array to store command and arguments */
+    int i;                      /* Loop variable */
+    pid_t pid;                  /* Process ID */
 
     while (1)
     {
         printf("$ "); /* Display prompt */
         characters = getline(&buffer, &bufsize, stdin); /* Read user input */
 
-        if (characters == -1)
+        if (characters == (ssize_t)-1) /* Adjusted comparison */
         {
             if (feof(stdin))
             {
