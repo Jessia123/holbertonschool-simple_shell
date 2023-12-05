@@ -13,6 +13,7 @@ int main(void) {
     char *token;
     char *args[MAX_ARGS];
     int i;
+    pid_t pid; // Declare pid at the start of the block
 
     while (1) {
         /* Displaying the prompt */
@@ -43,7 +44,7 @@ int main(void) {
         }
         args[i] = NULL; /* Set the last element to NULL for execve */
 
-        pid_t pid = fork();
+        pid = fork(); // Assign value to pid at the start of the block
 
         /* Error handling for fork */
         if (pid == -1) {
