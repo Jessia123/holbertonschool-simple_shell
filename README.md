@@ -4,7 +4,7 @@
 A recreation of a shell with a basic Unix command-line interpretor.
 
 ## Description
-BENRON shell takes in simple Unix commands and inliments them in the shell one command at a time. After the command is typed the shell will execute the command and print the output to the terminal with a new commandline for another set of arguments.
+Holberton-simple_shell shell takes in simple Unix commands and inliments them in the shell one command at a time. After the command is typed the shell will execute the command and print the output to the terminal with a new commandline for another set of arguments.
 ## Usage
 All the files are to be compiled on an Ubuntu 14.04 LTS machine with:
 
@@ -20,7 +20,7 @@ To exit the program, run:
 
 ## Built-Ins
 
-The following built-in is supported by BENRON Shell
+The following built-in is supported by Holberton-simple_shell Shell
 
 <code>env</code> -Prints the current working environment
 
