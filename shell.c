@@ -16,11 +16,9 @@ int main(void)
     char *buffer = NULL;
     size_t bufsize = 0;
     ssize_t characters;
-
-    char *token;  // Move declaration to the top
-    char *args[MAX_ARGS]; // Move declaration to the top
-
-    int i = 0; // Move declaration to the top
+    char *token;
+    char *args[MAX_ARGS];
+    int i;
 
     while (1)
     {
@@ -47,7 +45,7 @@ int main(void)
         buffer[strcspn(buffer, "\n")] = '\0';
 
         token = strtok(buffer, " ");
-        i = 0; // Reinitialize i for each loop iteration
+        i = 0; /* Reset i for each loop iteration */
 
         /* Tokenize input into command and arguments */
         while (token != NULL)
