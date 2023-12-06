@@ -11,10 +11,12 @@
 char *read_line(void)
 {
 	char *line = NULL;
-	size_t bufszie = 0;
-	getline(&line, &bufszie, stdin);
+	size_t bufsize = 0; // Fixed typo: changed 'bufszie' to 'bufsize'
+
+	getline(&line, &bufsize, stdin);
 	return (line);
 }
+
 /**
  * split_line - Split a string into tokens.
  * @line: The input string to split.
@@ -23,7 +25,7 @@ char *read_line(void)
  */
 char **split_line(char *line)
 {
-	int bufsize = BUFFER_SIZE, positon = 0;
+	int bufsize = BUFFER_SIZE, position = 0; // Fixed typo: changed 'positon' to 'position'
 	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
 
@@ -36,10 +38,10 @@ char **split_line(char *line)
 	token = strtok(line, " \t\n");
 	while (token != NULL)
 	{
-		tokens[positon] = token;
-		positon++;
+		tokens[position] = token;
+		position++;
 
-		if (positon >= bufsize)
+		if (position >= bufsize)
 		{
 			bufsize += BUFFER_SIZE;
 			tokens = realloc(tokens, bufsize * sizeof(char *));
@@ -51,9 +53,10 @@ char **split_line(char *line)
 		}
 		token = strtok(NULL, " \t\n");
 	}
-	tokens[positon] = NULL;
+	tokens[position] = NULL;
 	return (tokens);
 }
+
 /**
  * execute - Execute a command.
  * @args: An array of arguments, including the command itself.
@@ -73,7 +76,7 @@ int execute(char **args)
 		}
 		exit(EXIT_FAILURE);
 	}
-	else if(pid < 0)
+	else if (pid < 0)
 	{
 		perror("Error");
 	}
@@ -83,4 +86,5 @@ int execute(char **args)
 	}
 	return (1);
 }
+
 
