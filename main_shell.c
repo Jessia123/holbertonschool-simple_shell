@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * main - Entry point for the simple shell program
+ * main - Entry point for the simple shell program.
  *
  * Description: This function creates a simple shell that continuously prompts
  * the user for commands, reads the input, and executes commands until the
@@ -15,8 +15,7 @@ int main(void)
 	char **args;
 	int status;
 
-	do 
-	{
+	do {
 		printf("($) ");
 		line = read_line();
 		args = split_line(line);
@@ -24,8 +23,7 @@ int main(void)
 
 		free(line);
 		free(args);
-	}
-	while (status);
+	} while (status);
 
 	return (0);
 }
