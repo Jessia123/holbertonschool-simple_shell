@@ -66,9 +66,9 @@ char **split_line(char *line)
 int execute(char **args)
 {
 	pid_t pid;
-	
+
 	pid = fork();
-	
+
 	if (pid == 0)
 	{
 		if (execvp(args[0], args) == -1)
