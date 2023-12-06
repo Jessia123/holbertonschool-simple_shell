@@ -1,0 +1,65 @@
+.TH man_1_simple_shell 1 "December 2023" "1.0" "man_1_simple_shell Manual"
+
+.SH NAME
+man_1_simple_shell \- a simple shell program
+
+.SH SYNOPSIS
+.B man_1_simple_shell
+
+.SH DESCRIPTION
+The
+.B man_1_simple_shell
+is a simple shell program that provides a basic Unix-like command line interface. It can be used in interactive mode, where commands are executed from the terminal, or in non-interactive mode where commands are read from standard input.
+
+.SH OPTIONS
+This shell does not support any command-line options.
+
+.SH COMMANDS
+The shell supports execution of basic commands available in the system.
+
+.SH EXIT STATUS
+The shell returns a status code of 0 upon successful execution of a command. Non-zero status codes indicate an error.
+
+.SH EXAMPLES
+The following demonstrates how to use the
+.B man_1_simple_shell
+shell:
+
+.nf
+.B $ man_1_simple_shell
+.B ($) ls
+.B man_1_simple_shell.1 README.md shell.c
+.B ($)
+.B ($) exit
+.B ($)
+.fi
+
+.SH SEE ALSO
+.BR sh (1)
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Written by [Jessia Grimes & Charles Johnson].
+
+.SH COPYRIGHT
+This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.
+
+.SH REPORTING BUGS
+Report any bugs to <6143@holbertonstudents.com>.
+
+.SH HISTORY
+This manual page was written for the Simple Shell project.
+
+.SH VERSION
+This is version 1.0 of the Simple Shell manual.
+
+.SH NOTES
+This man page was written following the GNU man-page formatting conventions.
+
+.SH DISCLAIMER
+This man page is provided "as is" without any warranties.
+
+.SH COPYRIGHT
+This is free and unencumbered software released into the public domain.
