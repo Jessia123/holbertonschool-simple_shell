@@ -11,7 +11,7 @@
 char *read_line(void)
 {
 	char *line = NULL;
-	size_t bufsize = 0; // Fixed typo: changed 'bufszie' to 'bufsize'
+	size_t bufsize = 0;
 
 	getline(&line, &bufsize, stdin);
 	return (line);
@@ -25,7 +25,7 @@ char *read_line(void)
  */
 char **split_line(char *line)
 {
-	int bufsize = BUFFER_SIZE, position = 0; // Fixed typo: changed 'positon' to 'position'
+	int bufsize = BUFFER_SIZE, position = 0;
 	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
 
