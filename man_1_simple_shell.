@@ -1,0 +1,87 @@
+man_1_simple_shell(1)      man_1_simple_shell Manual     man_1_simple_shell(1)
+
+
+
+NNAAMMEE
+       man_1_simple_shell - a simple shell program
+
+
+SSYYNNOOPPSSIISS
+       mmaann__11__ssiimmppllee__sshheellll
+
+
+DDEESSCCRRIIPPTTIIOONN
+       The  mmaann__11__ssiimmppllee__sshheellll is a simple shell program that provides a basic
+       Unix-like command line interface. It can be used in  interactive  mode,
+       where  commands  are  executed from the terminal, or in non-interactive
+       mode where commands are read from standard input.
+
+
+OOPPTTIIOONNSS
+       This shell does not support any command-line options.
+
+
+CCOOMMMMAANNDDSS
+       The shell supports execution of basic commands available in the system.
+
+
+EEXXIITT SSTTAATTUUSS
+       The shell returns a status code of 0 upon  successful  execution  of  a
+       command. Non-zero status codes indicate an error.
+
+
+EEXXAAMMPPLLEESS
+       The following demonstrates how to use the mmaann__11__ssiimmppllee__sshheellll shell:
+
+       $$ mmaann__11__ssiimmppllee__sshheellll
+       (($$)) llss
+       mmaann__11__ssiimmppllee__sshheellll..11 RREEAADDMMEE..mmdd sshheellll..cc
+       (($$))
+       (($$)) eexxiitt
+       (($$))
+
+
+SSEEEE AALLSSOO
+       sshh(1)
+
+
+BBUUGGSS
+       No known bugs.
+
+
+AAUUTTHHOORR
+       Written by [Jessia Grimes & Charles Johnson].
+
+
+CCOOPPYYRRIIGGHHTT
+       This  is  free  software:  you  are free to change and redistribute it.
+       There is NO WARRANTY, to the extent permitted by law.
+
+
+RREEPPOORRTTIINNGG BBUUGGSS
+       Report any bugs to <6143@holbertonstudents.com>.
+
+
+HHIISSTTOORRYY
+       This manual page was written for the Simple Shell project.
+
+
+VVEERRSSIIOONN
+       This is version 1.0 of the Simple Shell manual.
+
+
+NNOOTTEESS
+       This man page was written following the GNU man-page formatting conven-
+       tions.
+
+
+DDIISSCCLLAAIIMMEERR
+       This man page is provided "as is" without any warranties.
+
+
+CCOOPPYYRRIIGGHHTT
+       This is free and unencumbered software released into the public domain.
+
+
+
+1.0                              December 2023           man_1_simple_shell(1)
